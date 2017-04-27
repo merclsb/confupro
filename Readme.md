@@ -3,4 +3,4 @@
 Trabajo fin de grado del Curso de Adaptación al grado de Ingenieria Informática
 
 
-virtualenv . pip intall -r requisitos.txt
+virtualenv . pip install -r requisitos.txt
