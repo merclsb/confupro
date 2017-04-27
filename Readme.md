@@ -2,7 +2,7 @@
 
 Trabajo fin de grado del Curso de Adaptación al grado de Ingenieria Informática
 
-# Pasos instalacion
+# Pasos instalación
 
 mkdir confupro && cd confupro/
 
