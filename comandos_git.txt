@@ -1,0 +1,23 @@
+it init
+
+git remote add origin https://github.com/merclsb/test.git
+
+git status
+
+git push -u origin master
+
+git add .
+git add *.html
+git add nombre.txt
+
+borrrar archivo
+git add nombreachrivo
+git commit -m "comentario"
+
+git commit -m "comentario"
+
+subir cambios de loca a github
+git push
+
+traer cambios de github a local
+git pull 
