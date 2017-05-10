@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CONFUPRO - 
+    {% block titulo %}
+    {% endblock %}
+  </title>
+
+</head>
+<body>
+
+  <h2>usuario: {{request.user}}</h2>
+
+  <div>
+    <ul id='menu'>
+      <li><a href='{% url "inicio" %}'>Inicio</a></li>
+      <li><a href='{% url "usuario_nuevo" %}'>Sign up</a></li>
+      <li><a href='{% url "usuario_login" %}'>Sign in</a></li>
+      <li><a href='{% url "usuario_logout" %}'>Logout</a></li>
+      <li><a href='{% url "usuario_perfil" %}'>Perfil</a></li>
+    </ul>
+  </div>
+  
+  {% block encabezado %}
+  {% endblock %}
+
+  {% block contenido %}
+  {% endblock %}
+    
+  
+</body>
+</html>
