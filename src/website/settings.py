@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Desbloquear el captcha
+#https://accounts.google.com/DisplayUnlockCaptcha
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '303@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+
 
 # Application definition
 
@@ -42,9 +51,11 @@ INSTALLED_APPS = [
     #APPs
     'confupro',
     #3th-party app
+    'crispy_forms',
 ]
 
-MIDDLEWARE = [
+#MIDDLEWARE = [
+MIDDLEWARE_CLASSES= [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,10 +71,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates/'),
-            os.path.join(BASE_DIR, 'templates/usuario'),
-            os.path.join(BASE_DIR, 'confupro/templates/'),
-
+            os.path.join(BASE_DIR, 'templates/'), #BASE_DIR = src/
+            os.path.join(BASE_DIR, 'confupro/templates/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -127,14 +136,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+#desde donde se sirven los archis estaticos
+STATIC_URL = '/static/'#/static/img/imag3.jpg
 
+#donde viviran los archivos estaticos en desarrollo
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static"),#src/static/
+    #os.path.join(BASE_DIR, "static_pro","static"),#src/static_pro/static
 ]
+#collestatic-> donde viviran los archivos estaticos en produccion
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR, ...)) # confupro/src
 
 # Media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = '/media/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CRISPY_TEMPALTE_PACK = 'bootstrap3'

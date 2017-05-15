@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
-{% block titulo %}Login{% endblock %}
+{% block head_title %} | SignUp{% endblock %}
 
 {% block encabezado %}
-	<h1>Entrar</h1>
+	<h1>Registra un nuevo usuario</h1>
 {% endblock %}
 
 {% block contenido %}
 
 	<form id='formulario' method='post' action=''>{% csrf_token %}
 		<table>{{formulario}}</table>
-		<p><input type='submit' value='Ingresar'/></p>
+		<p><input type='submit' value='Registrar'/></p>
 	</form>
+
 
 {% endblock %}

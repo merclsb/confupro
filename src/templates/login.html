@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block titulo %}Login{% endblock %}
 
 {% block encabezado %}
-	<h1>Entrar</h1>
+	<h1>Acceder</h1>
 {% endblock %}
 
 {% block contenido %}
 
-
-	<h1>Registra un nuevo usuario</h1>
-
 	<form id='formulario' method='post' action=''>{% csrf_token %}
-		<table>{{formulario}}</table>
-		<p><input type='submit' value='Registrar'/></p>
+		{{formulario|crispy}}
+		<p><input type='submit' value='Ingresar'/></p>
 	</form>
-
 
 {% endblock %}

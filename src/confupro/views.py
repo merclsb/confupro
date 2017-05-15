@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -7,26 +9,73 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 
+from .forms import FormularioContacto
+
+
+from django.conf import settings
+from django.core.mail import send_mail
+
 def inicio(request):
-    #html = "<html><body>Hola Mundo</body></html>"
-    #return HttpResponse(html)
-    return render(request, 'inicio.html')
+    titulo="Inicio"
+    saludo = "Hola"
+    if request.user.is_authenticated():
+        saludo = "Bienvenido" #%s" %(request.user)
+    contexto = {
+        "titulo":titulo,
+        "saludo":saludo,
+    }
+    return render(request, 'inicio.html',contexto)
+
+
+def contacto(request):
+    formulario = FormularioContacto(request.POST or None)
+
+    if formulario.is_valid():
+        #print (formulario.cleaned_data.get("email"))
+        # for i in formulario.cleaned_data:
+        #     print (i+":")
+        #     print (formulario.cleaned_data.get(i))
+        form_email =  formulario.cleaned_data.get("email")
+        form_mensaje = formulario.cleaned_data.get("mensaje")
+        form_nombre = formulario.cleaned_data.get("nombre")
+        email_asunto = 'Email de Contacto'
+        email_from = settings.EMAIL_HOST_USER
+        email_to = [email_from,"merc303@gmail.com"]
+        email_mensaje = " %s: %s enviado por %s" %(form_nombre, form_mensaje, form_email)
+        send_mail(
+            email_asunto,
+            email_mensaje,
+            email_from,
+            email_to,
+            fail_silently=False
+            )
+    titulo = "contacto"
+    contexto = {
+        "titulo":titulo,
+        "form":formulario,
+    }
+    plantilla = "contacto.html"
+
+
+    return render (request,plantilla,contexto)
+
+
+#-----------USUARIO------------
 
 def usuario_nuevo(request):
     if request.method=='POST':
         formulario = UserCreationForm(request.POST)
         if formulario.is_valid:
-            print (formulario)
             formulario.save()
             return HttpResponseRedirect('/')
     else:
-        formulario = UserCreationForm()
+        formulario = UserCreationForm()# se puede añadir emial ?
     context = {'formulario': formulario}
     return render(request, 'usuario_nuevo.html', context)
 
 def usuario_login(request):
     if not request.user.is_anonymous():
-        return HttpResponseRedirect('/usuario/perfil')
+        return HttpResponseRedirect('/usuario/perfil/')
     if request.method == 'POST':
         formulario = AuthenticationForm(request.POST)
         if formulario.is_valid:
@@ -36,11 +85,11 @@ def usuario_login(request):
             if acceso is not None:
                 if acceso.is_active:
                     login(request, acceso)
-                    return HttpResponseRedirect('/usuario/perfil')
+                    return HttpResponseRedirect('/usuario/perfil/')
                 else:
-                    return render(request, 'error_usuario_noactivo.html')
+                    return render(request, 'noactivo.html')
             else:
-                return render(request, 'error_usuario_nousuario.html')
+                return render(request, 'nousuario.html')
     else:
         formulario = AuthenticationForm()
     context = {'formulario': formulario}
@@ -56,8 +105,4 @@ def usuario_perfil(request):
 	usuario = request.user
 	context = {'usuario': usuario}
 	return render(request, 'usuario_perfil.html', context)
-
-
-
-
 
