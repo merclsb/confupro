@@ -4,6 +4,7 @@ Trabajo fin de grado del Curso de Adaptación al grado de Ingenieria Informátic
 
 # Pasos instalación
 
+```
 mkdir confupro && cd confupro/
 
 virtualenv -p python3.4 .
@@ -21,3 +22,5 @@ django-admin.py startproject website && mv website src && cd src
 http://127.0.0.1:8000/
 
 http://127.0.0.1:8000/admin
+
+```
