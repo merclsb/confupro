@@ -8,7 +8,7 @@ Trabajo fin de grado del Curso de Adaptación al grado de Ingenieria Informátic
 
 ![](http://cud.unizar.es/sites/default/files/personal/pers_asanchez/ResultadoFuncional.png)
 
-# Pasos instalación
+# Pasos para la instalación
 
 ```
 mkdir confupro && cd confupro/
