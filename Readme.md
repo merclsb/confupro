@@ -4,6 +4,10 @@ Trabajo fin de grado del Curso de Adaptación al grado de Ingenieria Informátic
 
 ![Unir Logo](https://www.decointerior.es/wp-content/uploads/2015/01/logo-unir-e1423826671421.png)
 
+![](http://cud.unizar.es/sites/default/files/personal/pers_asanchez/ListadoAnalisis.png)
+
+![](http://cud.unizar.es/sites/default/files/personal/pers_asanchez/ResultadoFuncional.png)
+
 # Pasos instalación
 
 ```
