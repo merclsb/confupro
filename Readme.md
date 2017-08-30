@@ -8,7 +8,7 @@ Trabajo fin de grado del Curso de Adaptación al grado de Ingenieria Informátic
 
 ![](http://cud.unizar.es/sites/default/files/personal/pers_asanchez/ResultadoFuncional.png)
 
-![](https://drive.google.com/open?id=1dpfrN9_F0TFKCthHx-y5_U9pZzFvIqkwlg)
+![](https://image.ibb.co/jcyYbk/Screen_Shot_2017_08_30_at_14_27_57.png)
 
 # Pasos para la instalación
 
